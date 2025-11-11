@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+/* 🎨 PP Pangram Sans Rounded Fonts */
+@font-face {
+  font-family: "PPPangramSansRounded-Bold";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPPangramSansRounded-Light";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPPangramSansRounded-Medium";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPPangramSansRounded-Semibold";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPPangramSansRounded-Thin";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPPangramSansRounded-Regular";
+  src: url("/src/assets/fonts/PPPangramSansRounded-CompactRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 🪶 Apply Global Font */
+body, html {
+  font-family: "PPPangramSansRounded-Regular", sans-serif;
+  font-style: normal;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* You can later switch like:
+   font-family: "PPPangramSansRounded-Bold";
+   or "PPPangramSansRounded-Thin"; 
+*/
+
+@font-face {
+  font-family: "PPPangramRounded";
+  src: url("/src/assets/fonts/PPPangramSansRounded-Bold.woff2") format("woff2"),
+       url("/src/assets/fonts/PPPangramSansRounded-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
