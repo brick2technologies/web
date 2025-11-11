@@ -1,123 +1,103 @@
 "use client";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   FiCode,
   FiLayout,
   FiZap,
-  FiShoppingCart,
-  FiBriefcase,
-  FiLayers,
-  FiSmartphone,
-  FiGlobe,
   FiTrendingUp,
   FiArrowRight,
-  FiCheck,
+ 
+  FiArrowUpRight,
 } from "react-icons/fi";
 import WorkModal from "./WorkModal";
 
 /* ------------------------------------------------------------------ */
 /* DATA                                                               */
 /* ------------------------------------------------------------------ */
-interface Service {
+interface Project {
   id: number;
   title: string;
+  category: string;
   description: string;
-  icon: React.ReactNode;
   image: string;
-  features: string[];
+  tags: string[];
+  stats: Record<string, string>;
+  link: string;
 }
 
-const services: Service[] = [
+const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Solutions",
+    title: "Nisarga Hyd",
+    category: "real estate & digital marketing",
     description:
-      "Build powerful online stores that convert visitors into customers with seamless shopping experiences.",
-    icon: <FiShoppingCart className="text-2xl" />,
+      "A modern real estate and digital marketing website built to showcase premium projects and boost online visibility for property listings and marketing campaigns.",
     image:
-      "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    features: [
-      "Payment Integration",
-      "Inventory Management",
-      "Multi-vendor Support",
-      "Analytics Dashboard",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762837677/Screenshot_2025-11-11_103640_qnbg0h.png",
+    tags: ["Next.js", "Tailwind CSS", "SEO", "Marketing Automation"],
+    stats: { leads: "+120%", traffic: "+200%" },
+    link: "https://nisargahyd.com",
   },
   {
     id: 2,
-    title: "Corporate Websites",
+    title: "HK Gastro Hospital",
+    category: "healthcare",
     description:
-      "Professional enterprise websites that establish credibility and showcase your brand's authority.",
-    icon: <FiBriefcase className="text-2xl" />,
+      "A hospital website for gastroenterology specialists, featuring appointment booking, doctor profiles, and patient service management.",
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-    features: [
-      "CMS Integration",
-      "Team Portals",
-      "Document Management",
-      "Multi-language Support",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762837772/Screenshot_2025-11-11_103906_mwjh3w.png",
+    tags: ["React", "Node.js", "MongoDB", "Booking System"],
+    stats: { appointments: "+350%", satisfaction: "4.9/5" },
+    link: "https://hkgastro.in",
   },
   {
     id: 3,
-    title: "Portfolio & Creative",
+    title: "Shubha",
+    category: "ecommerce & event management",
     description:
-      "Stunning portfolio websites that showcase your work and attract your ideal clients.",
-    icon: <FiLayers className="text-2xl" />,
+      "A complete e-commerce and event management platform offering pooja samagri and event planning services with seamless shopping experience.",
     image:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-    features: [
-      "Custom Animations",
-      "Gallery Systems",
-      "Client Testimonials",
-      "Contact Forms",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762837812/Screenshot_2025-11-11_103955_lboh5u.png",
+    tags: ["Next.js", "Stripe", "MongoDB", "E-commerce"],
+    stats: { sales: "+210%", returnUsers: "75%" },
+    link: "https://shubha.co.in",
   },
   {
     id: 4,
-    title: "Web Applications",
+    title: "BridgeGap Hospital",
+    category: "healthcare",
     description:
-      "Custom web apps built with cutting-edge technology to solve your unique business challenges.",
-    icon: <FiSmartphone className="text-2xl" />,
+      "A dedicated cancer hospital website serving Northern Telangana, designed for awareness, appointment scheduling, and patient engagement.",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    features: [
-      "Real-time Features",
-      "API Integration",
-      "Cloud Deployment",
-      "Scalable Architecture",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762837905/Screenshot_2025-11-11_104128_q2j3ed.png",
+    tags: ["React", "Tailwind", "Firebase", "Healthcare UI"],
+    stats: { reach: "+300%", patients: "+10K+" },
+    link: "https://bridgegaphospital.vercel.app",
   },
   {
     id: 5,
-    title: "Landing Pages",
+    title: "Metsonic",
+    category: "industrial equipment supplier",
     description:
-      "High-converting landing pages optimized for marketing campaigns and lead generation.",
-    icon: <FiTrendingUp className="text-2xl" />,
+      "A B2B industrial supply company website showcasing testing machines for industries, institutions, and colleges across India.",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    features: [
-      "A/B Testing Ready",
-      "SEO Optimized",
-      "Fast Loading",
-      "Conversion Focused",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762837954/Screenshot_2025-11-11_104210_b28poa.png",
+    tags: ["Next.js", "GSAP", "Responsive Design", "Product Showcase"],
+    stats: { clients: "+180+", inquiries: "+240%" },
+    link: "https://metsonic.vercel.app",
   },
   {
     id: 6,
-    title: "Custom Solutions",
+    title: "A360 Studio",
+    category: "architecture & interior design",
     description:
-      "Tailored web solutions designed specifically for your unique business requirements.",
-    icon: <FiGlobe className="text-2xl" />,
+      "An architecture and design studio website showcasing 3D walkthroughs, building plans, and modern design concepts for premium clients.",
     image:
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop",
-    features: [
-      "Fully Customizable",
-      "Third-party Integration",
-      "Advanced Features",
-      "Ongoing Support",
-    ],
+      "https://res.cloudinary.com/diqux3y0a/image/upload/v1762838020/Screenshot_2025-11-11_104323_ldt8bs.png",
+    tags: ["React", "Tailwind", "Framer Motion", "3D Visuals"],
+    stats: { projects: "200+", engagement: "+160%" },
+    link: "https://a360studio.vercel.app",
   },
 ];
 
@@ -151,7 +131,7 @@ const approachSteps = [
 /* ------------------------------------------------------------------ */
 /* MAIN COMPONENT                                                     */
 /* ------------------------------------------------------------------ */
-export default function ApproachServicesFlow() {
+export default function ApproachProjectsFlow() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -209,7 +189,7 @@ export default function ApproachServicesFlow() {
           </svg>
         </div>
 
-        {/* ---------------------- Services Flow ---------------------- */}
+        {/* ---------------------- Projects Section ---------------------- */}
         <div className="bg-gradient-to-b from-[#f8f9fa] to-white py-20">
           <div className="px-6 max-w-7xl mx-auto">
             <motion.h3
@@ -217,13 +197,12 @@ export default function ApproachServicesFlow() {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-center text-3xl md:text-5xl font-extrabold text-[#142C4C] mb-12"
             >
-              What We <span className="text-[#0098D4]">Build</span>
+              Our <span className="text-[#0098D4]">Projects</span>
             </motion.h3>
 
-            {/* Desktop */}
             <div className="hidden md:grid gap-16">
-              {services.map((service, i) => (
-                <ServiceFlowCard key={service.id} service={service} index={i} />
+              {projects.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i} />
               ))}
             </div>
 
@@ -238,12 +217,12 @@ export default function ApproachServicesFlow() {
                 }}
               />
               <div className="flex gap-6 px-6 pb-6 snap-x snap-mandatory">
-                {services.map((service) => (
+                {projects.map((project) => (
                   <div
-                    key={service.id}
+                    key={project.id}
                     className="snap-center flex-shrink-0 w-80"
                   >
-                    <ServiceCardMobile service={service} />
+                    <ProjectCardMobile project={project} />
                   </div>
                 ))}
               </div>
@@ -263,7 +242,7 @@ export default function ApproachServicesFlow() {
               <span className="text-[#0098D4]">Journey</span>?
             </h3>
             <p className="text-xl mb-8 text-gray-300">
-              Let's turn your vision into a powerful digital reality.
+              Let’s turn your vision into a powerful digital reality.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -278,7 +257,6 @@ export default function ApproachServicesFlow() {
         </div>
       </div>
 
-      {/* Modal */}
       <WorkModal isOpen={openModal} onClose={() => setOpenModal(false)} />
     </>
   );
@@ -317,85 +295,69 @@ const ApproachCard = ({
   </motion.div>
 );
 
-const ServiceFlowCard = ({
-  service,
+const ProjectCard = ({
+  project,
   index,
 }: {
-  service: Service;
+  project: Project;
   index: number;
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
+}) => (
+  <motion.div
+    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ delay: index * 0.1 }}
+    className={`flex flex-col md:flex-row items-center gap-8 ${
+      index % 2 === 1 ? "md:flex-row-reverse" : ""
+    }`}
+  >
+    <div className="flex-1">
+      <div className="relative overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-64 object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#142C4C]/80 to-transparent" />
+      </div>
+    </div>
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`flex flex-col md:flex-row items-center gap-8 ${
-        index % 2 === 1 ? "md:flex-row-reverse" : ""
-      }`}
-    >
-      <div className="flex-1">
-        <motion.div
-          animate={{ scale: isHovered ? 1.05 : 1 }}
-          className="relative overflow-hidden rounded-3xl shadow-xl"
+    <div className="flex-1 space-y-4">
+      <h3 className="text-3xl font-bold text-[#142C4C]">{project.title}</h3>
+      <p className="text-gray-700">{project.description}</p>
+      <ul className="space-y-1">
+        {project.tags.map((tag, i) => (
+          <li key={i} className="text-sm text-[#0098D4] font-medium">
+            • {tag}
+          </li>
+        ))}
+      </ul>
+      <div className="pt-4">
+        <button
+          onClick={() =>
+            window.open(project.link, "_blank", "noopener,noreferrer")
+          }
+          className="inline-flex items-center gap-2 rounded-full bg-[#0098D4] px-6 py-2 text-white font-semibold hover:bg-[#142C4C] transition-all"
         >
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-64 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#142C4C]/80 to-transparent" />
-          <div className="absolute bottom-4 left-4 text-white">
-            {service.icon}
-          </div>
-        </motion.div>
+          View Project <FiArrowUpRight />
+        </button>
       </div>
+    </div>
+  </motion.div>
+);
 
-      <div className="flex-1 space-y-4">
-        <h3 className="text-3xl font-bold text-[#142C4C]">{service.title}</h3>
-        <p className="text-gray-700">{service.description}</p>
-        <ul className="space-y-2">
-          {service.features.map((f, i) => (
-            <li key={i} className="flex items-center gap-2 text-gray-600">
-              <FiCheck className="text-[#0098D4]" />
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
-  );
-};
-
-const ServiceCardMobile = ({ service }: { service: Service }) => (
+const ProjectCardMobile = ({ project }: { project: Project }) => (
   <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
     <div className="h-48 relative">
       <img
-        src={service.image}
-        alt={service.title}
+        src={project.image}
+        alt={project.title}
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#142C4C]/70 to-transparent" />
-      <div className="absolute bottom-4 left-4 text-white text-3xl">
-        {service.icon}
-      </div>
     </div>
     <div className="p-6 space-y-3">
-      <h4 className="text-xl font-bold text-[#142C4C]">{service.title}</h4>
-      <p className="text-sm text-gray-600">{service.description}</p>
-      <div className="flex flex-wrap gap-2">
-        {service.features.slice(0, 2).map((f, i) => (
-          <span
-            key={i}
-            className="text-xs bg-[#0098D4]/10 text-[#0098D4] px-3 py-1 rounded-full"
-          >
-            {f}
-          </span>
-        ))}
-      </div>
+      <h4 className="text-xl font-bold text-[#142C4C]">{project.title}</h4>
+      <p className="text-sm text-gray-600">{project.description}</p>
     </div>
   </div>
 );
