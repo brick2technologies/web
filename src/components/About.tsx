@@ -1,6 +1,6 @@
 import { SpaceBackground } from "./ui/Spacebackground";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   return (

@@ -1,5 +1,5 @@
 import AetherFlowHero from "./ui/BGHero";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 export default function HeroSection() {
   return (

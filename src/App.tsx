@@ -5,7 +5,7 @@ import Work from './components/WorkSection';
 import TestimonialsSection from './components/Testimonial';
 import CTASection from './components/CTASection';
 import ApproachServicesSection from './components/Approach';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (

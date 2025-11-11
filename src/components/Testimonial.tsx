@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FiStar } from "react-icons/fi";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 interface Testimonial {
   id: number;

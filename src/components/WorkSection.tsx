@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowUpRight, FiTrendingUp, FiZap } from "react-icons/fi";
 import Modal from "./WorkModal";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 interface Project {
   id: number;
