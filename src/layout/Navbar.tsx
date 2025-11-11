@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export default function AnimatedNavbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const menuItems = [
     { label: "About", id: "about" },
@@ -22,6 +23,25 @@ export default function AnimatedNavbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // ✅ Close when clicking outside (mobile)
+  useEffect(() => {
+    if (!open) return;
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [open]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -73,6 +93,7 @@ export default function AnimatedNavbar() {
 
         {open && (
           <motion.div
+            ref={dropdownRef}
             key="dropdown"
             initial={{ opacity: 0, scale: 0.8, y: -20, x: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
@@ -82,7 +103,7 @@ export default function AnimatedNavbar() {
               ease: [0.25, 0.1, 0.25, 1],
             }}
             onMouseLeave={() => setOpen(false)} // ✅ close when mouse leaves
-            className="absolute top-0 right-0 origin-top-right w-[50vw] sm:w-[20rem] md:w-[26rem] h-[65vh] lg:h-[67vh] bg-gradient-to-b from-[#142C4C] to-[#0098D4] rounded-bl-[2.5rem] shadow-2xl flex flex-col items-center justify-start py-10 px-8 z-[100] overflow-hidden backdrop-blur-md"
+            className="absolute top-0 right-0 origin-top-right w-[65vw] sm:w-[20rem] md:w-[26rem] h-[55vh] sm:h-[60vh] lg:h-[67vh] bg-gradient-to-b from-[#142C4C] to-[#0098D4] rounded-bl-[2.5rem] shadow-2xl flex flex-col items-center justify-start py-10 px-8 z-[100] overflow-hidden backdrop-blur-md"
           >
             {/* Close Button */}
             <motion.button
