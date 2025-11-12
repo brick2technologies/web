@@ -42,7 +42,7 @@ export default function CTASection() {
     setShowDropdown(false);
   };
 
-  const isFormValid = formData.name && formData.email && formData.phone && formData.projectType;
+  const isFormValid = formData.name  && formData.phone && formData.projectType;
 
   return (
     <section id="contact" className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
@@ -162,7 +162,7 @@ export default function CTASection() {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          required
+                          
                           className="w-full rounded-lg border border-[#142C4C]/20 bg-white py-3 pl-10 pr-4 text-sm text-[#142C4C] placeholder-[#142C4C]/50 focus:border-[#0098D4] focus:outline-none focus:ring-2 focus:ring-[#0098D4]/20 transition-all"
                           placeholder="your@email.com"
                         />

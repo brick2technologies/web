@@ -9,8 +9,8 @@ export default function AnimatedNavbar() {
 
   const menuItems = [
     { label: "About", id: "about" },
+    { label: "Services", id: "services" },
     { label: "Work", id: "work" },
-    { label: "Approach", id: "approach" },
     { label: "Testimonials", id: "testimonials" },
     { label: "Contact", id: "contact" },
   ];

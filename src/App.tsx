@@ -1,11 +1,17 @@
 import Navbar from './layout/Navbar';
 import HeroSection from './components/HeroSection';
 import About from './components/About';
-import Work from './components/WorkSection';
+import Services from './components/Services';
 import TestimonialsSection from './components/Testimonial';
 import CTASection from './components/CTASection';
-import ApproachServicesSection from './components/Approach';
+import ProjectSection from './components/Work';
+import ApproachSection from './components/Approach';
 import { Helmet } from 'react-helmet';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 function App() {
   return (
@@ -175,8 +181,9 @@ function App() {
       <Navbar />
       <HeroSection />
       <About />
-      <Work />
-      <ApproachServicesSection />
+      <ApproachSection />
+      <Services />
+      <ProjectSection />
       <TestimonialsSection />
       <CTASection />
     </>
