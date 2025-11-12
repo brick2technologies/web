@@ -11,11 +11,8 @@ const About = () => {
     >
       {/* ✅ SEO Metadata */}
       <Helmet>
-        <title>About Brick2Tech | Digital Agency in Hyderabad</title>
-        <meta
-          name="description"
-          content="Learn about Brick2Tech Technologies — a Hyderabad-based digital agency specializing in web development, branding, and digital marketing powered by MERN and AI-driven solutions."
-        />
+        
+        
         <meta
           name="keywords"
           content="about Brick2Tech, web development agency Hyderabad, digital marketing company Telangana, AI branding agency, MERN stack developers India"

@@ -1,6 +1,6 @@
 import { useRef, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Helmet } from "react-helmet";
+
 import {
   FiShoppingCart,
   FiBriefcase,
@@ -119,16 +119,7 @@ export default function ServicesShowcase() {
 
   return (
     <>
-      {/* ✅ SEO Metadata */}
-      <Helmet>
-        <title>Our Services | Brick2Tech Technologies – What We Build</title>
-        <meta
-          name="description"
-          content="Explore Brick2Tech’s wide range of web development services including e-commerce, corporate sites, web apps, and custom digital solutions crafted with Next.js, React, and Tailwind."
-        />
-        <link rel="canonical" href="https://brick2tech.com/#services" />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
+      
 
       <section
         id="services"

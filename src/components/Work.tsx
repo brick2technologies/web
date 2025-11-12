@@ -141,31 +141,72 @@ export default function ProjectsSection() {
         </div>
 
         {/* ---------------------- Final CTA ---------------------- */}
-        <div className="px-6 py-20 bg-gradient-to-t from-[#142C4C] to-[#142C4C]/95 mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <h3 className="text-4xl md:text-6xl font-extrabold mb-6">
-              Ready to Start Your{" "}
-              <span className="text-[#0098D4]">Journey</span>?
-            </h3>
-            <p className="text-xl mb-8 text-gray-300">
-              Let’s turn your vision into a powerful digital reality.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setOpenModal(true)}
-              className="group inline-flex items-center gap-3 rounded-full bg-[#0098D4] px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-white hover:text-[#142C4C] transition-all"
-            >
-              Start Your Project
-              <FiArrowRight className="transition-transform group-hover:translate-x-1" />
-            </motion.button>
-          </motion.div>
-        </div>
+        <>
+  
+  {/* 🌊 Inverted Top Curve (flows into CTA) */}
+  <div className="relative w-full overflow-hidden leading-[0] -mb-[1px]">
+    <svg
+      className="relative block w-full h-32 rotate-180"
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#142C4C"
+        fillOpacity="1"
+        d="M0,192L48,202.7C96,213,192,235,288,224C384,213,480,171,576,165.3C672,160,768,192,864,192C960,192,1056,160,1152,133.3C1248,107,1344,85,1392,74.7L1440,64L1440,0L0,0Z"
+      ></path>
+    </svg>
+  </div>
+
+  {/* 🌟 CTA Section */}
+  <div className="relative z-10 bg-[#142C4C] px-6 py-20 text-white text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="max-w-4xl mx-auto"
+    >
+      <h3 className="text-4xl md:text-6xl font-extrabold mb-6">
+        Ready to Start Your{" "}
+        <span className="text-[#0098D4]">Journey</span>?
+      </h3>
+      <p className="text-xl mb-8 text-gray-300">
+        Let’s turn your vision into a powerful digital reality.
+      </p>
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setOpenModal(true)}
+        className="group inline-flex items-center gap-3 rounded-full bg-[#0098D4] px-8 py-4 text-lg font-bold text-white shadow-xl hover:bg-white hover:text-[#142C4C] transition-all"
+      >
+        Start Your Project
+        <FiArrowRight className="transition-transform group-hover:translate-x-1" />
+      </motion.button>
+    </motion.div>
+  </div>
+
+  {/* 🌊 Inverted Bottom Curve (flows out of CTA) */}
+  <div className="relative w-full overflow-hidden leading-[0] -mt-[1px]">
+  <svg
+    className="relative block w-full h-32 scale-y-[-1]"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+  >
+    <path
+      fill="#142C4C"
+      fillOpacity="1"
+      d="M0,64L48,74.7C96,85,192,107,288,128C384,149,480,171,576,186.7C672,203,768,213,864,202.7C960,192,1056,160,1152,133.3C1248,107,1344,85,1392,74.7L1440,64L1440,320L0,320Z"
+    ></path>
+  </svg>
+</div>
+
+
+
+
+</>
+
+
+
       </section>
 
       <WorkModal isOpen={openModal} onClose={() => setOpenModal(false)} />

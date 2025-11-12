@@ -78,7 +78,7 @@ export default function CTASection() {
               className="space-y-3"
             >
               {[
-                { text: "200+ successful projects delivered" },
+                { text: "50+ successful projects delivered" },
                 { text: "Fast, scalable, and future-proof solutions" },
                 { text: "Dedicated support from day one" },
               ].map((item, i) => (
@@ -100,7 +100,7 @@ export default function CTASection() {
               className="mt-8 flex justify-center gap-6 text-sm lg:justify-start"
             >
               <div className="text-center">
-                <p className="text-2xl font-bold text-[#142C4C]">200+</p>
+                <p className="text-2xl font-bold text-[#142C4C]">60+</p>
                 <p className="text-xs text-[#142C4C]/60">Projects</p>
               </div>
               <div className="h-10 w-px bg-[#142C4C]/20" />

@@ -128,11 +128,7 @@ export default function TestimonialsSection() {
     >
       {/* ✅ SEO Metadata */}
       <Helmet>
-        <title>Client Testimonials | Brick2Tech Technologies</title>
-        <meta
-          name="description"
-          content="Read real client testimonials from industry leaders across healthcare, real estate, startups, and enterprise sectors who trusted Brick2Tech for their digital transformation."
-        />
+        
         <link rel="canonical" href="https://brick2tech.com/#testimonials" />
         <meta property="og:title" content="Brick2Tech Client Testimonials" />
         <meta
