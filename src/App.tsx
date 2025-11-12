@@ -6,6 +6,8 @@ import TestimonialsSection from './components/Testimonial';
 import CTASection from './components/CTASection';
 import ProjectSection from './components/Work';
 import ApproachSection from './components/Approach';
+import OfferFormSection from './components/OfferFormSection';
+import ContactButtons from './components/ContactButtons';
 import { Helmet } from 'react-helmet';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -179,10 +181,13 @@ function App() {
       </Helmet>
 
       {/* ✅ Site Sections */}
+      <OfferFormSection />
+      <ContactButtons />
       <Analytics />
       <Navbar />
       <HeroSection />
       <About />
+      
       <ApproachSection />
       <Services />
       <ProjectSection />
