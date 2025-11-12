@@ -9,7 +9,7 @@ import ApproachSection from './components/Approach';
 import { Helmet } from 'react-helmet';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 gsap.registerPlugin(ScrollTrigger);
 
