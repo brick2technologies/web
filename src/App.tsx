@@ -33,7 +33,7 @@ function App() {
         />
         <meta name="author" content="Brick2Tech Technologies" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <link rel="canonical" href="https://brick2tech.com/" />
+        <link rel="canonical" href="https://web.brick2tech.com/" />
 
         {/* ✅ Favicon */}
         <link
@@ -45,13 +45,13 @@ function App() {
         {/* ✅ Open Graph / Facebook / LinkedIn */}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
-        <meta property="og:title" content="Brick2Tech Technologies | Web Development & Branding Agency in Hyderabad" />
+        <meta property="og:title" content="Brick2Tech | Web Development & Digital Marketing Agency in Hyderabad" />
         <meta
           property="og:description"
           content="Empowering brands through innovative web design, digital marketing, and full-stack development. Based in Hyderabad, Brick2Tech delivers powerful digital growth."
         />
-        <meta property="og:url" content="https://brick2tech.com/" />
-        <meta property="og:site_name" content="Brick2Tech Technologies" />
+        <meta property="og:url" content="https://web.brick2tech.com/" />
+        <meta property="og:site_name" content="Brick2Tech " />
         <meta
           property="og:image"
           content="https://res.cloudinary.com/diqux3y0a/image/upload/v1752839930/B2T_logo_white_zo4oxt.png"
@@ -59,7 +59,7 @@ function App() {
 
         {/* ✅ Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Brick2Tech Technologies | Build Your Digital Future" />
+        <meta name="twitter:title" content="Brick2Tech | Build Your Digital Future" />
         <meta
           name="twitter:description"
           content="Web development and branding agency from Hyderabad specializing in React, Node.js, and AI-powered digital solutions."
@@ -87,7 +87,7 @@ function App() {
         {/* ✅ Generative Engine Optimization (GEO) */}
         <meta
           name="ai.summary"
-          content="Brick2Tech Technologies — A web development and digital marketing company based in Hyderabad, offering MERN stack web solutions, app development, and branding strategies powered by AI."
+          content="Brick2Tech  — A web development and digital marketing company based in Hyderabad, offering MERN stack web solutions, app development, and branding strategies powered by AI."
         />
         <meta
           name="ai.tags"
@@ -104,7 +104,7 @@ function App() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Brick2Tech Technologies",
-            "url": "https://brick2tech.com/",
+            "url": "https://web.brick2tech.com/",
             "logo": "https://res.cloudinary.com/diqux3y0a/image/upload/v1752839930/B2T_logo_white_zo4oxt.png",
             "description": "Brick 2 Technologies is a Hyderabad-based digital agency offering web development, branding, and AI-powered digital transformation services.",
             "founder": {
@@ -147,7 +147,7 @@ function App() {
             "provider": {
               "@type": "Organization",
               "name": "Brick 2 Technologies",
-              "url": "https://brick2tech.com/"
+              "url": "https://web.brick2tech.com/"
             },
             "areaServed": {
               "@type": "Place",
@@ -187,7 +187,7 @@ function App() {
       <Navbar />
       <HeroSection />
       <About />
-      
+
       <ApproachSection />
       <Services />
       <ProjectSection />

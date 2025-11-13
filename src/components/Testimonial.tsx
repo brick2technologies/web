@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FiStar } from "react-icons/fi";
-import { Helmet } from "react-helmet";
+
 
 interface Testimonial {
   id: number;
@@ -126,20 +126,8 @@ export default function TestimonialsSection() {
       aria-labelledby="testimonials-heading"
       role="region"
     >
-      {/* ✅ SEO Metadata */}
-      <Helmet>
-        
-        <link rel="canonical" href="https://brick2tech.com/#testimonials" />
-        <meta property="og:title" content="Brick2Tech Client Testimonials" />
-        <meta
-          property="og:description"
-          content="Trusted by CEOs, founders, and marketing leaders — Brick2Tech delivers outstanding digital solutions that drive measurable business results."
-        />
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/diqux3y0a/image/upload/v1752839930/B2T_logo_white_zo4oxt.png"
-        />
-      </Helmet>
+
+
 
       {/* Header */}
       <div className="mx-auto mb-10 max-w-7xl px-4 text-center sm:mb-12 sm:px-6 lg:px-8">

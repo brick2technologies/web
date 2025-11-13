@@ -1,6 +1,6 @@
 import { SpaceBackground } from "./ui/Spacebackground";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
+
 
 const About = () => {
   return (
@@ -9,15 +9,7 @@ const About = () => {
       className="relative bg-white min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8 p-8 overflow-hidden"
       aria-labelledby="about-heading"
     >
-      {/* ✅ SEO Metadata */}
-      <Helmet>
-        
-        
-        <meta
-          name="keywords"
-          content="about Brick2Tech, web development agency Hyderabad, digital marketing company Telangana, AI branding agency, MERN stack developers India"
-        />
-      </Helmet>
+      
 
       {/* ✅ Left Column — Sticky with Accessible Background */}
       <div
