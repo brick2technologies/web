@@ -90,9 +90,26 @@ export default function OfferPopupModal() {
 };
 
   /** ✔ FORM SUBMIT (Sound + Confetti + Success Screen) */
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  /** ✔ FORM SUBMIT (Web3Forms + Sound + Confetti + Success Screen) */
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
+  // Create FormData object
+  const submission = new FormData();
+  submission.append("access_key", "32fe525d-eb74-4412-a48d-c6dc8914295e");
+  submission.append("name", formData.name);
+  submission.append("phone", formData.phone);
+  submission.append("projectType", formData.projectType);
+
+  // Send to Web3Forms
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: submission,
+  });
+
+  const result = await response.json();
+
+  if (result.success) {
     setFormSubmitted(true);
     setShowFloatingIcon(false);
     setShowModal(true);
@@ -101,7 +118,14 @@ export default function OfferPopupModal() {
     fireConfetti();
 
     if (reopenTimer.current) clearTimeout(reopenTimer.current);
-  };
+
+    console.log("Email sent successfully:", result);
+  } else {
+    console.error("Email failed:", result);
+    alert("Error sending message. Please try again.");
+  }
+};
+
 
   /** Cleanup timers */
   useEffect(() => {

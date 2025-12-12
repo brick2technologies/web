@@ -24,14 +24,42 @@ export default function CTASection() {
   const [submitted, setSubmitted] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", projectType: "" });
-    }, 4000);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Show success animation AFTER sending
+  setSubmitted(true);
+
+  // Create Web3Forms submission
+  const formDataToSend = new FormData();
+  formDataToSend.append("access_key", "ab0258d8-ff3f-4265-b206-c072ffa9b1b2");
+  formDataToSend.append("name", formData.name);
+  formDataToSend.append("email", formData.email || "Not Provided");
+  formDataToSend.append("phone", formData.phone);
+  formDataToSend.append("projectType", formData.projectType);
+
+  // Send to Web3Forms
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formDataToSend,
+  });
+
+  const data = await response.json();
+
+  if (data.success) {
+    console.log("Form submitted successfully!");
+  } else {
+    console.error("Form submission error:", data);
+    alert("Something went wrong. Please try again.");
+  }
+
+  // Reset form after 4 sec
+  setTimeout(() => {
+    setSubmitted(false);
+    setFormData({ name: "", email: "", phone: "", projectType: "" });
+  }, 4000);
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
