@@ -1,4 +1,4 @@
-"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiX, FiSend, FiClock, FiGift } from "react-icons/fi";
@@ -22,7 +22,7 @@ export default function OfferPopupModal() {
 
   /** ⏳ Show modal after 3 sec */
   useEffect(() => {
-    const timer = setTimeout(() => setShowModal(true), 3000);
+    const timer = setTimeout(() => setShowModal(true), 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,7 +55,7 @@ export default function OfferPopupModal() {
       reopenTimer.current = setTimeout(() => {
         setShowFloatingIcon(false);
         setShowModal(true);
-      }, 10000);
+      }, 180000);
     }
   };
 
@@ -253,7 +253,7 @@ export default function OfferPopupModal() {
                       animate={{ opacity: 1, y: 0 }}
                       className="mx-auto text-center text-[#00D47F] bg-[#00D47F]/15 border border-[#00D47F]/30 w-[85%] text-sm rounded-lg py-1.5 mb-3"
                     >
-                      🎁 Special Deal: Save 40% Today Only!
+                      🎁 Special Year End Deal: Save 40% !
                     </motion.div>
 
                     {/* FORM */}
